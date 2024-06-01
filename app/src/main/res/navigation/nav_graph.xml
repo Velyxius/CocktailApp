@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeOrderFragment">
+    <fragment
+        android:id="@+id/homeOrderFragment"
+        android:name="com.cocktailapp.equipocinco.view.fragment.HomeOrderFragment"
+        android:label="fragment_home_order"
+        tools:layout="@layout/fragment_home_order" >
+        <action
+            android:id="@+id/action_homeOrderFragment_to_addOrderFragment"
+            app:destination="@id/addOrderFragment" />
+        <action
+            android:id="@+id/action_homeOrderFragment_to_detailsOrderFragment"
+            app:destination="@id/detailsOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addOrderFragment"
+        android:name="com.cocktailapp.equipocinco.view.fragment.AddOrderFragment"
+        android:label="fragment_add_order"
+        tools:layout="@layout/fragment_add_order" >
+        <action
+            android:id="@+id/action_addOrderFragment_to_addCocktailFragment"
+            app:destination="@id/addCocktailFragment" />
+        <action
+            android:id="@+id/action_addOrderFragment_to_detailsCocktailFragment"
+            app:destination="@id/detailsCocktailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsOrderFragment"
+        android:name="com.cocktailapp.equipocinco.view.fragment.DetailsOrderFragment"
+        android:label="fragment_details_order"
+        tools:layout="@layout/fragment_details_order" >
+        <action
+            android:id="@+id/action_detailsOrderFragment_to_editOrderFragment"
+            app:destination="@id/editOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editOrderFragment"
+        android:name="com.cocktailapp.equipocinco.view.fragment.EditOrderFragment"
+        android:label="fragment_edit_order"
+        tools:layout="@layout/fragment_edit_order" />
+    <fragment
+        android:id="@+id/addCocktailFragment"
+        android:name="com.cocktailapp.equipocinco.view.fragment.AddCocktailFragment"
+        android:label="fragment_add_cocktail"
+        tools:layout="@layout/fragment_add_cocktail" />
+    <fragment
+        android:id="@+id/detailsCocktailFragment"
+        android:name="com.cocktailapp.equipocinco.view.fragment.DetailsCocktailFragment"
+        android:label="fragment_details_cocktail"
+        tools:layout="@layout/fragment_details_cocktail" />
+</navigation>
