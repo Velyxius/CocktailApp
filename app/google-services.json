@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "456637194397",
+    "project_id": "cocktailapp-565e9",
+    "storage_bucket": "cocktailapp-565e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456637194397:android:bb301be5a23b7abb2cb474",
+        "android_client_info": {
+          "package_name": "com.cocktailapp.equipocinco"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5LPSKBHZ7_hl35DesDxjoiQI2e-Uj16k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
