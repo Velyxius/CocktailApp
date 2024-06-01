@@ -1,16 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+package com.cocktailapp.equipocinco.repository
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clContenedor"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp"
-        android:background="@color/black"
-        tools:context=".view.LoginActivity">
+import com.cocktailapp.equipocinco.data.OrderDao
+import com.cocktailapp.equipocinco.webservice.ApiService
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import javax.inject.Inject
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+
+
+class LoginRepository @Inject constructor(
+    private val firebaseAuth: FirebaseAuth
+){
+    //private val firebaseAuth = FirebaseAuth.getInstance()
+    fun registerUser(email: String, pass:String, isRegisterComplete: (Boolean)->Unit){
+        if(email.isNotEmpty() && pass.isNotEmpty()){
+            firebaseAuth.createUserWithEmailAndPassword(email,pass)
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        isRegisterComplete(true)
+
+                    } else {
+                        isRegisterComplete(false)
+                    }
+                }
+        }else{
+            isRegisterComplete(false)
+        }
+    }
+}
