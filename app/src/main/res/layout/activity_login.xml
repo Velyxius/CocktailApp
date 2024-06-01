@@ -1,31 +1,104 @@
-package com.cocktailapp.equipocinco.repository
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-import com.cocktailapp.equipocinco.data.OrderDao
-import com.cocktailapp.equipocinco.webservice.ApiService
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import javax.inject.Inject
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clContenedor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:background="@color/black"
+        tools:context=".view.LoginActivity">
 
+        <ImageView
+            android:id="@+id/LoginImage"
+            android:layout_width="193dp"
+            android:layout_height="223dp"
+            android:layout_marginBottom="10dp"
+            android:paddingTop="120dp"
+            android:paddingBottom="20dp"
+            android:src="@drawable/icono_login"
+            app:layout_constraintBottom_toTopOf="@+id/tilEmail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilEmail"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tilPass">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
+                style="@style/TextInputEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="Email"
+                android:textColorHint="@android:color/white"
+                android:padding="16dp"
+                android:textSize="18sp"
+                android:maxLength="40"/>
 
-class LoginRepository @Inject constructor(
-    private val firebaseAuth: FirebaseAuth
-){
-    //private val firebaseAuth = FirebaseAuth.getInstance()
-    fun registerUser(email: String, pass:String, isRegisterComplete: (Boolean)->Unit){
-        if(email.isNotEmpty() && pass.isNotEmpty()){
-            firebaseAuth.createUserWithEmailAndPassword(email,pass)
-                .addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        isRegisterComplete(true)
+        </com.google.android.material.textfield.TextInputLayout>
 
-                    } else {
-                        isRegisterComplete(false)
-                    }
-                }
-        }else{
-            isRegisterComplete(false)
-        }
-    }
-}
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPass"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="true"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/tilEmail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPass"
+                style="@style/TextInputEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="Password"
+                android:textColorHint="@color/white"
+                android:padding="16dp"
+                android:textSize="18sp"
+                android:drawableEnd="@drawable/ojo_alternancia_2" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintTop_toBottomOf="@+id/tilPass"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:backgroundTint="@color/color_botones"/>
+
+        <TextView
+            android:id="@+id/tvRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registrarse"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:layout_marginTop="50dp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
