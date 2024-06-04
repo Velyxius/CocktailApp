@@ -10,40 +10,32 @@ import com.cocktailapp.equipocinco.repository.OrderRepository
 import kotlinx.coroutines.launch
 import com.cocktailapp.equipocinco.model.Order
 import com.cocktailapp.equipocinco.model.Cocktail
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 
 
-@HiltViewModel
-class OrderViewModel @Inject constructor(
-    private val orderRepository: OrderRepository
-) : ViewModel() {
 
-    private val _listOrder = MutableLiveData<MutableList<Order>>()
-    val listOrder: LiveData<MutableList<Order>> get() = _listOrder
+class OrderViewModel(application: Application) : AndroidViewModel(application) {
+    val context = getApplication<Application>()
+    private val orderRepository = OrderRepository(context)
 
     private val _progresState = MutableLiveData(false)
     val progresState: LiveData<Boolean> = _progresState
 
+    private val _listOrder = MutableLiveData<MutableList<Order>>()
+    val listOrder: LiveData<MutableList<Order>> get() = _listOrder
 
-    private val _listCoctails = MutableLiveData<MutableList<Cocktail>>()
-    val listCoctails: LiveData<MutableList<Cocktail>> = _listCoctails
-
-    fun saveOrder(order: Order) {
+    fun saveOrder(order: Order){
         viewModelScope.launch {
-
             _progresState.value = true
             try {
-                orderRepository.saveOrder(order)
+                orderRepository.guardarPedido(order)
                 _progresState.value = false
-
             } catch (e: Exception) {
                 _progresState.value = false
             }
         }
     }
 
-    fun getListOrder() {
+    fun getListOrder(){
         viewModelScope.launch {
             _progresState.value = true
             try {
@@ -52,20 +44,6 @@ class OrderViewModel @Inject constructor(
             } catch (e: Exception) {
                 _progresState.value = false
             }
-
-        }
-    }
-
-    fun deleteOrder(order: Order) {
-        viewModelScope.launch {
-            _progresState.value = true
-            try {
-                orderRepository.deleteOrder(order)
-                _progresState.value = false
-            } catch (e: Exception) {
-                _progresState.value = false
-            }
-
         }
     }
 
@@ -73,7 +51,19 @@ class OrderViewModel @Inject constructor(
         viewModelScope.launch {
             _progresState.value = true
             try {
-                orderRepository.updateOrderRepository(order)
+                orderRepository.updateOrder(order)
+                _progresState.value = false
+            } catch (e: Exception) {
+                _progresState.value = false
+            }
+        }
+    }
+
+    fun deleteOrder(order: Order) {
+        viewModelScope.launch {
+            _progresState.value = true
+            try {
+                orderRepository.eliminarPedido(order.table)
                 _progresState.value = false
             } catch (e: Exception) {
                 _progresState.value = false
