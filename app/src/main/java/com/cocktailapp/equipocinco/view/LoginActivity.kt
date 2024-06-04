@@ -135,16 +135,10 @@ class LoginActivity : AppCompatActivity() {
     private fun loginUser(){
         val email = binding.etEmail.text.toString()
         val pass = binding.etPass.text.toString()
-        val isFromWidget = intent.getStringExtra("fromWidget")
         loginViewModel.loginUser(email,pass){ isLogin ->
             if (isLogin){
                 saveSession(email)
-                if(isFromWidget == "true"){
-                    finish()
-                } else {
                     goToHome()
-                }
-
             }else {
                 Toast.makeText(this, "Login incorrecto", Toast.LENGTH_SHORT).show()
             }
