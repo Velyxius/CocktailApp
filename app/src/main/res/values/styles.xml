@@ -35,20 +35,24 @@
         <item name="android:indeterminateTintMode">src_atop</item>
     </style>
 
-    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="android:textColorHint">@color/gray</item>
-        <item name="cursorColor">@color/pink</item>
+    <style name="TextInputLayoutStyle" parent='android:Widget'>
+        <item name="boxCornerRadiusTopStart">16dp</item>
+        <item name="boxCornerRadiusTopEnd">16dp</item>
+        <item name="boxCornerRadiusBottomStart">16dp</item>
+        <item name="boxCornerRadiusBottomEnd">16dp</item>
+        <item name="boxBackgroundColor">@android:color/white</item>
+        <item name="boxBackgroundMode">filled</item>
         <item name="hintTextColor">@color/gray</item>
-        <item name="placeholderTextColor">@color/black</item>
-        <item name="boxStrokeColor">#703DCA</item>
-        <item name="android:layout_marginTop">20dp</item>
-        <item name="android:layout_marginStart">20dp</item>
-        <item name="android:layout_marginEnd">20dp</item>
+        <item name="hintEnabled">true</item>
     </style>
 
-    <style name="TextInputEditTextStyle">
-        <item name="android:textColor">@color/gray</item>
+
+    <style name="TextInputEditTextStyle" parent="android:Widget">
+        <item name="android:padding">16dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
     </style>
+
 
     <style name="Widget.equipoCinco.AppWidget.Container" parent="android:Widget">
         <item name="android:id">@android:id/background</item>
