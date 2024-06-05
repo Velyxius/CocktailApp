@@ -49,9 +49,10 @@ class AddOrderFragment : Fragment() {
         val codigo = binding.etCodigo.text.toString()
         val nombreArticulo = binding.etNombreArticulo.text.toString()
         val precio = binding.etPrecio.text.toString()
+        val url = ""
 
         if (codigo.isNotEmpty() && nombreArticulo.isNotEmpty() && precio.isNotEmpty()) {
-            val detalleProducto: MutableList<String> = mutableListOf(nombreArticulo, precio)
+            val detalleProducto: MutableList<String> = mutableListOf(nombreArticulo, precio,url)
             val listaProductos: MutableList<MutableList<String>> = mutableListOf(detalleProducto)
             val orden = Order(codigo, listaProductos)
             orderViewModel.saveOrder(orden)

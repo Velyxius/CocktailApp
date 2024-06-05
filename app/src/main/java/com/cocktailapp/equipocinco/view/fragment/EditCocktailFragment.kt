@@ -57,8 +57,6 @@ class EditCocktailFragment : Fragment() {
             val order = miObjeto.order
             receivedOrder = order
             receivedPosition = miObjeto.position
-            println("Table: ${order.table}")
-            println(order.drinks[miObjeto.position])
             val drink = order.drinks[miObjeto.position][0]
             val numberDrink = order.drinks[miObjeto.position][1]
             binding.etNombreArticulo.setText(drink)
@@ -69,7 +67,8 @@ class EditCocktailFragment : Fragment() {
     private fun updateOrder(){
         val nombreArticulo = binding.etNombreArticulo.text.toString()
         val precio = binding.etPrecio.text.toString()
-        val modifieDrink: MutableList<String> = mutableListOf(nombreArticulo,precio)
+        val url = ""
+        val modifieDrink: MutableList<String> = mutableListOf(nombreArticulo,precio,url)
         val listDrinks: MutableList<MutableList<String>> = receivedOrder.drinks
         listDrinks[receivedPosition] = modifieDrink
         if (nombreArticulo.isNotEmpty() && precio.isNotEmpty()) {

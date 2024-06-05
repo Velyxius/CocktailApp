@@ -50,7 +50,9 @@ class AddCocktailFragment : Fragment() {
         receivedOrder = receivedBundle?.getSerializable("clave")  as Order
         val nombreArticulo = binding.etNombreArticulo.text.toString()
         val precio = binding.etPrecio.text.toString()
-        val aditionalDrink: MutableList<String> = mutableListOf(nombreArticulo,precio)
+        val url = ""
+        val aditionalDrink: MutableList<String> = mutableListOf(nombreArticulo,precio,url)
+
 
         if (nombreArticulo.isNotEmpty() && precio.isNotEmpty()) {
             receivedOrder.drinks.add(aditionalDrink)
