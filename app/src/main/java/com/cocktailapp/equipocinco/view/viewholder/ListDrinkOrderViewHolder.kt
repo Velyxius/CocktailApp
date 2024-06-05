@@ -33,10 +33,12 @@ class ListDrinkOrderViewHolder(
         drink:MutableList<String>,
         orderViewModel: OrderViewModel
     ) {
+        val quantity_drink = "${drink[0]}"
+        val name_cocktail = "${drink[1]}"
+        val url_coctail = "${drink[2]}"
 
-
-        bindingItem.tvQuantity.text = "${drink[0]}"
-        bindingItem.valueTextView.text = "${drink[1]}"
+        bindingItem.tvQuantity.text = quantity_drink
+        bindingItem.valueTextView.text = name_cocktail
 
         val listaObjetos = listOf(
             MiObjeto(order,position)
