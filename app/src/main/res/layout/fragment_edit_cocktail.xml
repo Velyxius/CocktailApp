@@ -11,11 +11,11 @@
 
         <include
             android:id="@+id/mytoolbar"
-            layout="@layout/add_coctel_toolbar" />
+            layout="@layout/edit_coctel_toolbar" />
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilNombreCo"
+            android:id="@+id/tilNombreCoctel"
             style="@style/TextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/AgregarCAnt"
+            android:id="@+id/EditCAnt"
             style="@style/TextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,11 +50,11 @@
             app:hintEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilNombreCo"
+            app:layout_constraintTop_toBottomOf="@+id/tilNombreCoctel"
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etcant"
+                android:id="@+id/etcantidad"
                 style="@style/TextInputEditTextStyle"
                 android:layout_width="380dp"
                 android:layout_height="wrap_content"
@@ -66,13 +66,13 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/fbagregarCoctel"
+            android:id="@+id/fbeditarCoctel"
             android:layout_width="152dp"
             android:layout_height="45dp"
             android:layout_marginBottom="204dp"
             android:backgroundTint="@color/color_botones"
-            android:contentDescription="@string/btn_info_addCoctel"
-            android:text="@string/btn_info_addCoctel"
+            android:contentDescription="@string/btn_info_edit"
+            android:text="@string/btn_info_edit"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +92,7 @@
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fbagregarCoctel"
+            app:layout_constraintEnd_toStartOf="@+id/fbeditarCoctel"
             app:shapeAppearanceOverlay="@style/RoundedFAB"
             app:tint="@color/white" />
 
