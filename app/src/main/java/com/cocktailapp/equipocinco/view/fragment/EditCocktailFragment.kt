@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.databinding.DataBindingUtil.setContentView
 import com.cocktailapp.equipocinco.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -38,6 +40,7 @@ class EditCocktailFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_edit_cocktail, container, false)
     }
 
+
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -57,4 +60,6 @@ class EditCocktailFragment : Fragment() {
                 }
             }
     }
+
+
 }
