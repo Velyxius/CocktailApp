@@ -24,6 +24,7 @@
     <string name="button_delete">Botón eliminar cocktail</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="titleCreateOrder">Agregar mesa</string>
 
     <!-- Strings used for fragments for navigation -->
     <string-array name="cocktails">
