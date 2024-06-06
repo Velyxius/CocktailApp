@@ -23,9 +23,6 @@ class OrderViewModel(application: Application) : AndroidViewModel(application) {
     private val _listOrder = MutableLiveData<MutableList<Order>>()
     val listOrder: LiveData<MutableList<Order>> get() = _listOrder
 
-    private val _cocktail = MutableLiveData<List<Map<String, Any>> >()
-    val cocktail: LiveData<List<Map<String, Any>> > get() = _cocktail
-
     fun saveOrder(order: Order){
         viewModelScope.launch {
             _progressState.value = true
@@ -67,18 +64,6 @@ class OrderViewModel(application: Application) : AndroidViewModel(application) {
             _progressState.value = true
             try {
                 orderRepository.eliminarPedido(order.table)
-                _progressState.value = false
-            } catch (e: Exception) {
-                _progressState.value = false
-            }
-        }
-    }
-
-    fun getCocktail(cocktail: String) {
-        viewModelScope.launch {
-            _progressState.value = true
-            try {
-                _cocktail.value = orderRepository.getCocktail(cocktail)
                 _progressState.value = false
             } catch (e: Exception) {
                 _progressState.value = false

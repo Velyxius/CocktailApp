@@ -83,17 +83,4 @@ class OrderRepository(val context: Context) {
             null
         }
     }
-
-    suspend fun getCocktail(cocktail: String): List<Map<String, Any>> {
-        return withContext(Dispatchers.IO) {
-            try {
-                val response = apiService.getCocktail(cocktail)
-                response.drinks
-            } catch (e: Exception) {
-                e.printStackTrace()
-                emptyList<Map<String, Any>>()
-            }
-        }
-    }
-
 }
