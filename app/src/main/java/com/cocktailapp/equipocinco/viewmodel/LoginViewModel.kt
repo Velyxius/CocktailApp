@@ -27,19 +27,8 @@ class LoginViewModel @Inject constructor (
     }
 
     fun loginUser(email: String, pass: String, isLogin: (Boolean) -> Unit) {
-
-        if (email.isNotEmpty() && pass.isNotEmpty()) {
-            FirebaseAuth.getInstance()
-                .signInWithEmailAndPassword(email, pass)
-                .addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        isLogin(true)
-                    } else {
-                        isLogin(false)
-                    }
-                }
-        } else {
-            isLogin(false)
+        repository.loginUser(email,pass) { response ->
+            isLogin(response)
         }
     }
 

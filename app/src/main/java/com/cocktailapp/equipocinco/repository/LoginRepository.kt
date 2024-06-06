@@ -26,4 +26,20 @@ class LoginRepository @Inject constructor(
             isRegisterComplete(false)
         }
     }
+
+    fun loginUser(email: String, pass: String, isLogin: (Boolean) -> Unit) {
+
+        if (email.isNotEmpty() && pass.isNotEmpty()) {
+            firebaseAuth.signInWithEmailAndPassword(email, pass)
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        isLogin(true)
+                    } else {
+                        isLogin(false)
+                    }
+                }
+        } else {
+            isLogin(false)
+        }
+    }
 }

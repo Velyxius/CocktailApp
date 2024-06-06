@@ -12,8 +12,11 @@
     <string name="button_add">Agregar nuevo pedido</string>
     <string name="title_home_manager">Administrador \nde pedidos</string>
     <string name="button_add2">Agenda orden nueva</string>
-    <string name="btn_info_delete">Botón eliminar orden</string>
-    <string name="btn_info_edit">Botón editar orden</string>
+    <string name="btn_info_delete">Eliminar </string>
+    <string name="btn_info_edit">Editar </string>
+    <string name="btn_info_editCoctel">Editar Coctel </string>
+    <string name="btn_info_addCoctel">Agregar Coctel </string>
+    <string name="btn_info_cancel">Cancelar </string>
 
     <string name="id_mesa">#%d</string>
     <string name="button_logout">Cerrar sesión</string>
