@@ -10,12 +10,12 @@
     <string name="save_order">Guardar Orden</string>
     <string name="description_back_button">Botón para devolverte</string>
     <string name="button_add">Agregar nuevo pedido</string>
-    <string name="title_home_manager">Administrador \nde pedidos</string>
+    <string name="title_home_manager">Administrar \nmesas</string>
     <string name="button_add2">Agenda orden nueva</string>
     <string name="btn_info_delete">Eliminar </string>
     <string name="btn_info_edit">Editar </string>
     <string name="btn_info_editCoctel">Editar Coctel </string>
-    <string name="btn_info_addCoctel">Agregar Coctel </string>
+    <string name="btn_addCoctel">Agregar </string>
     <string name="btn_info_cancel">Cancelar </string>
 
     <string name="id_mesa">#%d</string>
@@ -25,5 +25,7 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="titleCreateOrder">Agregar mesa</string>
+    <string name="toolbarTitleStr">Agregar cóctel</string>
+    <string name="description_btn_addCoctel">Boton para agregar coctel</string>
 
 </resources>
