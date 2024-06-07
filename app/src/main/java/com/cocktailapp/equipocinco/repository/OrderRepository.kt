@@ -1,9 +1,6 @@
 package com.cocktailapp.equipocinco.repository
 
-import android.content.Context
 import com.cocktailapp.equipocinco.model.Order
-import com.cocktailapp.equipocinco.webservice.ApiService
-import com.cocktailapp.equipocinco.webservice.ApiUtils
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
