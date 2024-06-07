@@ -12,10 +12,18 @@
     <string name="button_add">Agregar nuevo pedido</string>
     <string name="title_home_manager">Administrador \nde pedidos</string>
     <string name="button_add2">Agenda orden nueva</string>
-    <string name="btn_info_delete">Botón eliminar orden</string>
-    <string name="btn_info_edit">Botón editar orden</string>
+    <string name="btn_info_delete">Eliminar </string>
+    <string name="btn_info_edit">Editar </string>
+    <string name="btn_info_editCoctel">Editar Coctel </string>
+    <string name="btn_info_addCoctel">Agregar Coctel </string>
+    <string name="btn_info_cancel">Cancelar </string>
 
     <string name="id_mesa">#%d</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="button_logout">Cerrar sesión</string>
+    <string name="title_home_coctails">MESA 1</string>
+    <string name="button_delete">Botón eliminar cocktail</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="titleCreateOrder">Agregar mesa</string>
+
 </resources>

@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import android.widget.TextView
+import androidx.databinding.DataBindingUtil.setContentView
 import com.cocktailapp.equipocinco.R
 import com.cocktailapp.equipocinco.databinding.FragmentEditCocktailBinding
 import com.cocktailapp.equipocinco.model.Order
@@ -34,6 +36,7 @@ class EditCocktailFragment : Fragment() {
         binding.lifecycleOwner = this
         return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -87,6 +90,29 @@ class EditCocktailFragment : Fragment() {
         binding.etNombreArticulo.setText("")
         binding.etPrecio.setText("")
     }
+
+
+
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment EditCocktailFragment.
+         */
+        // TODO: Rename and change types and number of parameters
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            EditCocktailFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
+    }
+
 
 
 }
