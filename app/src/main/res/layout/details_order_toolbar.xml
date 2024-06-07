@@ -39,7 +39,7 @@
                     android:id="@+id/toolbarTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/title_home_coctails"
+                    android:text="@string/title_details_order"
                     android:textAppearance="@style/ToolbarHomeCoctailTitleStyle"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

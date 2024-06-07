@@ -81,7 +81,7 @@ class HomeOrderFragment : Fragment() {
     }
 
     private fun observerProgress(){
-        orderViewModel.progresState.observe(viewLifecycleOwner){status ->
+        orderViewModel.progressState.observe(viewLifecycleOwner){status ->
             binding.progress.isVisible = status
         }
     }

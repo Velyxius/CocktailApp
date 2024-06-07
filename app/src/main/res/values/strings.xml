@@ -20,12 +20,48 @@
 
     <string name="id_mesa">#%d</string>
     <string name="button_logout">Cerrar sesión</string>
-    <string name="title_home_coctails">MESA 1</string>
+    <string name="title_details_order">MESA #</string>
     <string name="button_delete">Botón eliminar cocktail</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="titleCreateOrder">Agregar mesa</string>
     <string name="toolbarTitleStr">Agregar cóctel</string>
     <string name="description_btn_addCoctel">Boton para agregar coctel</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string-array name="cocktails">
+        <item>Applejack</item>
+        <item>Aviation</item>
+        <item>Bamboo</item>
+        <item>Bellini</item>
+        <item>Bloody Mary</item>
+        <item>Boulevardier</item>
+        <item>Bramble</item>
+        <item>Brooklyn</item>
+        <item>Caipirinha</item>
+        <item>Clover Club</item>
+        <item>Cosmopolitan</item>
+        <item>Daiquiri</item>
+        <item>Gimlet</item>
+        <item>Mai Tai</item>
+        <item>Manhattan</item>
+        <item>Margarita</item>
+        <item>Michelada</item>
+        <item>Mimosa</item>
+        <item>Mojito</item>
+        <item>Moscow Mule</item>
+        <item>Negroni</item>
+        <item>Old Fashioned</item>
+        <item>Paloma</item>
+        <item>Penicillin</item>
+        <item>Piña Colada</item>
+        <item>Sazerac</item>
+        <item>Spritz</item>
+        <item>Tom Collins</item>
+        <item>Vodka Lemon</item>
+        <item>Whiskey Sour</item>
+        <item>White Lady</item>
+        <item>Zombie</item>
+    </string-array>
 
 </resources>

@@ -43,7 +43,6 @@ class DetailsOrderFragment : Fragment() {
         setups()
     }
 
-
     private fun dataListDrink() {
         val receivedBundle = arguments
         val orderViewModel: OrderViewModel by viewModels()
@@ -51,6 +50,7 @@ class DetailsOrderFragment : Fragment() {
         val receiveDrinks: MutableList<MutableList<String>> = receivedOrder.drinks
         val recycler = binding.recyclerview
         val layoutManager = LinearLayoutManager(context)
+        binding.tbDetailsOrder.toolbarTitle.text = "Mesa ${receivedOrder.table}"
         recycler.layoutManager = layoutManager
         val adapter = ListDrinkOrderAdapter(
             receivedOrder,
