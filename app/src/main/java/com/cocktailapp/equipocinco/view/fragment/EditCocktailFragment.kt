@@ -18,8 +18,9 @@ import com.cocktailapp.equipocinco.model.Order
 import com.cocktailapp.equipocinco.view.viewholder.ListDrinkOrderViewHolder
 import com.cocktailapp.equipocinco.viewmodel.OrderViewModel
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class EditCocktailFragment : Fragment() {
     private lateinit var binding: FragmentEditCocktailBinding
     private lateinit var sharedPreferences: SharedPreferences

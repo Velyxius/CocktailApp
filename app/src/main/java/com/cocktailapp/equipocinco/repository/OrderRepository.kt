@@ -4,11 +4,14 @@ import android.content.Context
 import com.cocktailapp.equipocinco.model.Order
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
 
 
-class OrderRepository(val context: Context) {
-    private val db = FirebaseFirestore.getInstance()
+class OrderRepository @Inject constructor(
+    private val firestore: FirebaseFirestore
+){
 
+    private val db = firestore
     fun eliminarPedido(table: String) {
         db.collection("order").document(table).delete()
             .addOnSuccessListener {

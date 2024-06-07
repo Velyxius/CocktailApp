@@ -15,7 +15,9 @@ import com.cocktailapp.equipocinco.view.adapter.ListDrinkOrderAdapter
 import com.cocktailapp.equipocinco.databinding.FragmentDetailsOrderBinding
 import com.cocktailapp.equipocinco.model.Order
 import com.cocktailapp.equipocinco.viewmodel.OrderViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 
 class DetailsOrderFragment : Fragment() {
     private lateinit var binding: FragmentDetailsOrderBinding
