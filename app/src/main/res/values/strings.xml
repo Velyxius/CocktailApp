@@ -20,7 +20,7 @@
 
     <string name="id_mesa">#%d</string>
     <string name="button_logout">Cerrar sesión</string>
-    <string name="title_home_coctails">MESA 1</string>
+    <string name="title_details_order">MESA #</string>
     <string name="button_delete">Botón eliminar cocktail</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
