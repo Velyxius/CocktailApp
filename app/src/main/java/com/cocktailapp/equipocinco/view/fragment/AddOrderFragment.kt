@@ -118,7 +118,7 @@ class AddOrderFragment : Fragment() {
             findNavController().navigate(R.id.action_addOrderFragment_to_detailsOrderFragment,bundle)
             Toast.makeText(context, "Datos guardados", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(context, "Por favor, llene todos los campos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
         }
     }
 

@@ -64,12 +64,12 @@ class AddCocktailFragment : Fragment() {
             receivedOrder.drinks.add(aditionalDrink)
             val orden = Order(receivedOrder.table, receivedOrder.drinks)
             orderViewModel.updateOrder(orden)
-            Toast.makeText(context, "Coctel agregado con exito", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Cóctel agregado con éxito", Toast.LENGTH_SHORT).show()
             val bundle = Bundle()
             bundle.putSerializable("clave",receivedOrder)
             findNavController().navigate(R.id.action_addCocktailFragment_to_detailsOrderFragment,bundle)
         } else {
-            Toast.makeText(context, "Por favor, llene todos los campos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
         }
     }
 
