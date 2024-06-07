@@ -10,7 +10,7 @@ class OrderRepository(val context: Context) {
     private val db = FirebaseFirestore.getInstance()
 
     fun eliminarPedido(table: String) {
-        db.collection("order").document("1").delete()
+        db.collection("order").document(table).delete()
             .addOnSuccessListener {
                 println("Pedido eliminado exitosamente.")
             }

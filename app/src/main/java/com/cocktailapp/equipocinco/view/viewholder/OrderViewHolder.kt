@@ -18,10 +18,8 @@ class OrderViewHolder(binding: ItemOrderBinding, navController: NavController):
 
     fun setItemOrder(order: Order) {
 
-        bindingItem.tvPetName.text = order.table
-        println("NUMBER TABLE")
-        println(order.table)
-        //bindingItem.tvPrice.text = "$ ${order.drinks[0][0]} "
+        val number_table = order.table
+        bindingItem.tvPetName.text =  number_table
         bindingItem.cvOrder.setOnClickListener {
             val bundle = Bundle()
             bundle.putSerializable("clave", order)

@@ -22,11 +22,8 @@
         android:label="fragment_add_order"
         tools:layout="@layout/fragment_add_order" >
         <action
-            android:id="@+id/action_addOrderFragment_to_addCocktailFragment"
-            app:destination="@id/addCocktailFragment" />
-        <action
-            android:id="@+id/action_addOrderFragment_to_detailsCocktailFragment"
-            app:destination="@id/detailsCocktailFragment" />
+            android:id="@+id/action_addOrderFragment_to_detailsOrderFragment"
+            app:destination="@id/detailsOrderFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsOrderFragment"
@@ -34,22 +31,42 @@
         android:label="fragment_details_order"
         tools:layout="@layout/fragment_details_order" >
         <action
-            android:id="@+id/action_detailsOrderFragment_to_editOrderFragment"
-            app:destination="@id/editOrderFragment" />
+            android:id="@+id/action_detailsOrderFragment_to_editCocktailFragment"
+            app:destination="@id/editCocktailFragment" />
+        <action
+            android:id="@+id/action_detailsOrderFragment_to_addCocktailFragment"
+            app:destination="@id/addCocktailFragment" />
+        <action
+            android:id="@+id/action_detailsOrderFragment_to_deleteOrderFragment"
+            app:destination="@id/deleteOrderFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/editOrderFragment"
-        android:name="com.cocktailapp.equipocinco.view.fragment.EditOrderFragment"
-        android:label="fragment_edit_order"
-        tools:layout="@layout/fragment_edit_order" />
     <fragment
         android:id="@+id/addCocktailFragment"
         android:name="com.cocktailapp.equipocinco.view.fragment.AddCocktailFragment"
         android:label="fragment_add_cocktail"
-        tools:layout="@layout/fragment_add_cocktail" />
+        tools:layout="@layout/fragment_add_cocktail" >
+        <action
+            android:id="@+id/action_addCocktailFragment_to_detailsOrderFragment"
+            app:destination="@id/detailsOrderFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/detailsCocktailFragment"
-        android:name="com.cocktailapp.equipocinco.view.fragment.DetailsCocktailFragment"
-        android:label="fragment_details_cocktail"
-        tools:layout="@layout/fragment_details_cocktail" />
+        android:id="@+id/editCocktailFragment"
+        android:name="com.cocktailapp.equipocinco.view.fragment.EditCocktailFragment"
+        android:label="EditCocktailFragment" >
+        <action
+            android:id="@+id/action_editCocktailFragment_to_detailsOrderFragment"
+            app:destination="@id/detailsOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/deleteOrderFragment"
+        android:name="com.cocktailapp.equipocinco.view.fragment.DeleteOrderFragment"
+        android:label="fragment_delete_order"
+        tools:layout="@layout/fragment_delete_order" >
+        <action
+            android:id="@+id/action_deleteOrderFragment_to_homeOrderFragment"
+            app:destination="@id/homeOrderFragment" />
+        <action
+            android:id="@+id/action_deleteOrderFragment_to_detailsOrderFragment"
+            app:destination="@id/detailsOrderFragment" />
+    </fragment>
 </navigation>

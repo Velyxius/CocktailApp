@@ -1,6 +1,5 @@
 package com.cocktailapp.equipocinco.di
 
-import android.content.Context
 import com.cocktailapp.equipocinco.utils.Constants.BASE_URL
 import com.cocktailapp.equipocinco.webservice.ApiService
 import com.google.firebase.auth.FirebaseAuth
@@ -8,7 +7,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

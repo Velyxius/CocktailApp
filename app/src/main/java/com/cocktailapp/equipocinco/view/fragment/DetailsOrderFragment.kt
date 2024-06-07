@@ -1,56 +1,79 @@
 package com.cocktailapp.equipocinco.view.fragment
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cocktailapp.equipocinco.R
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.cocktailapp.equipocinco.view.adapter.ListDrinkOrderAdapter
+import com.cocktailapp.equipocinco.databinding.FragmentDetailsOrderBinding
+import com.cocktailapp.equipocinco.model.Order
+import com.cocktailapp.equipocinco.viewmodel.OrderViewModel
 
 
 class DetailsOrderFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var binding: FragmentDetailsOrderBinding
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var receivedOrder: Order
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_details_order, container, false)
+        binding = FragmentDetailsOrderBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DetailsOrderFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DetailsOrderFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        sharedPreferences = requireActivity().getSharedPreferences("shared", Context.MODE_PRIVATE)
+        dataListDrink()
+        addDrink()
+        deleteDrink()
     }
+
+
+    private fun dataListDrink() {
+        val receivedBundle = arguments
+        val orderViewModel: OrderViewModel by viewModels()
+        receivedOrder = receivedBundle?.getSerializable("clave")  as Order
+        val receiveDrinks: MutableList<MutableList<String>> = receivedOrder.drinks
+        val recycler = binding.recyclerview
+        val layoutManager = LinearLayoutManager(context)
+        recycler.layoutManager = layoutManager
+        val adapter = ListDrinkOrderAdapter(
+            receivedOrder,
+            receiveDrinks,
+            findNavController(),
+            orderViewModel
+        )
+        recycler.adapter = adapter
+        adapter.notifyDataSetChanged()
+    }
+
+    private fun addDrink(){
+        binding.fbagregar.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putSerializable("clave",receivedOrder)
+            findNavController().navigate(R.id.action_detailsOrderFragment_to_addCocktailFragment,bundle)
+        }
+    }
+
+    private fun deleteDrink(){
+        binding.trashAllBtn.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putSerializable("clave",receivedOrder)
+            findNavController().navigate(R.id.action_detailsOrderFragment_to_deleteOrderFragment,bundle)
+        }
+    }
+
+
 }
