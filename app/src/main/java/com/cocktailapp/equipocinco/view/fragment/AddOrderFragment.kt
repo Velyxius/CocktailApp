@@ -34,7 +34,6 @@ class AddOrderFragment : Fragment() {
     private lateinit var imageURL: String
     private lateinit var cocktailName: String
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -78,12 +77,13 @@ class AddOrderFragment : Fragment() {
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, drinks)
         binding.etNombreC.setAdapter(adapter)
     }
+
     private fun fetchImageURL() {
         cocktailViewModel.getCocktail(cocktailName)
         cocktailViewModel.cocktail.observe(viewLifecycleOwner) { drinks ->
             val drinkName = drinks.first().drinkName
             val URL = drinks.first().drinkURL
-            Log.d("EstaVaGlide", drinkName)
+            // Log.d("EstaVaGlide", drinkName)
             cocktailName = drinkName
             imageURL = URL
         }
@@ -94,7 +94,7 @@ class AddOrderFragment : Fragment() {
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             cocktailName = binding.etNombreC.text.toString()
-            Log.d("NombreCoctel", cocktailName)
+            // Log.d("NombreCoctel", cocktailName)
         }
 
         override fun afterTextChanged(s: Editable?) {}
@@ -107,7 +107,6 @@ class AddOrderFragment : Fragment() {
         val cantidad = binding.etcant.text.toString()
         val url = imageURL
 
-
         if (mesa.isNotEmpty() && nombre_coctel.isNotEmpty() && cantidad.isNotEmpty()) {
             val detalleProducto: MutableList<String> = mutableListOf(nombre_coctel, cantidad, url)
             val listaProductos: MutableList<MutableList<String>> = mutableListOf(detalleProducto)
@@ -118,7 +117,7 @@ class AddOrderFragment : Fragment() {
             findNavController().navigate(R.id.action_addOrderFragment_to_detailsOrderFragment,bundle)
             Toast.makeText(context, "Datos guardados", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(context, "Por favor, llene todos los campos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
         }
     }
 
