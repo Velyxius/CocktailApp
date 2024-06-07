@@ -42,4 +42,14 @@ class LoginRepository @Inject constructor(
             isLogin(false)
         }
     }
+
+    fun logoutUseRepository(onLogoutComplete: (Boolean, String?) -> Unit) {
+        try {
+            firebaseAuth.signOut()
+            onLogoutComplete(true, null) // Cierre de sesión exitoso
+        } catch (e: Exception) {
+            // Manejo de errores durante el cierre de sesión
+            onLogoutComplete(false, e.message)
+        }
+    }
 }

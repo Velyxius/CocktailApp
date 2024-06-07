@@ -44,19 +44,11 @@ class LoginViewModel @Inject constructor (
         return repository
     }
 
-    fun setFirebaseAuth(auth: FirebaseAuth) {
-        firebaseAuth = auth
-    }
 
-    // TODO: Daniel revisa porfa
+
+    
     fun logoutUser(onLogoutComplete: (Boolean, String?) -> Unit) {
-        try {
-            firebaseAuth.signOut()
-            onLogoutComplete(true, null) // Cierre de sesión exitoso
-        } catch (e: Exception) {
-            // Manejo de errores durante el cierre de sesión
-            onLogoutComplete(false, e.message)
-        }
+        repository.logoutUseRepository(onLogoutComplete)
     }
 
 }
