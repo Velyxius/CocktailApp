@@ -104,6 +104,7 @@ class EditCocktailFragment : Fragment() {
             val order = miObjeto.order
             receivedOrder = order
             receivedPosition = miObjeto.position
+            imageURL = order.drinks[miObjeto.position][2]
             val drink = order.drinks[miObjeto.position][0]
             val numberDrink = order.drinks[miObjeto.position][1]
             binding.etNombreC.setText(drink)
