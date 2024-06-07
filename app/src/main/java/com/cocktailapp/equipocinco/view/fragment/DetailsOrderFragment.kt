@@ -71,7 +71,7 @@ class DetailsOrderFragment : Fragment() {
     }
 
     private fun setups(){
-        binding.homeToolbar.backBtn.setOnClickListener{
+        binding.tbDetailsOrder.backBtn.setOnClickListener{
             findNavController().navigate(R.id.action_detailsOrderFragment_to_homeOrderFragment)
         }
     }
