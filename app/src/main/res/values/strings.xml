@@ -10,7 +10,7 @@
     <string name="save_order">Guardar Orden</string>
     <string name="description_back_button">Botón para devolverte</string>
     <string name="button_add">Agregar nuevo pedido</string>
-    <string name="title_home_manager">Administrador \nde pedidos</string>
+    <string name="title_home_manager">Administrar \nmesas</string>
     <string name="button_add2">Agenda orden nueva</string>
     <string name="btn_info_delete">Eliminar </string>
     <string name="btn_info_edit">Editar </string>
