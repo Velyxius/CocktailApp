@@ -43,7 +43,7 @@
             app:tint="@color/white"/>
 
         <ImageView
-            android:id="@+id/logout_btn"
+            android:id="@+id/trashAll_btn"
             android:layout_width="63dp"
             android:layout_height="59dp"
             android:layout_marginStart="32dp"
@@ -71,3 +71,4 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
+

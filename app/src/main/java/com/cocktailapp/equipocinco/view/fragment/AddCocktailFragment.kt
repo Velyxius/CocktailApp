@@ -1,37 +1,31 @@
 package com.cocktailapp.equipocinco.view.fragment
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.cocktailapp.equipocinco.R
 import com.cocktailapp.equipocinco.databinding.FragmentAddCocktailBinding
-import com.cocktailapp.equipocinco.viewmodel.CocktailViewModel
+import com.cocktailapp.equipocinco.model.Order
+import com.cocktailapp.equipocinco.viewmodel.OrderViewModel
+
+
 class AddCocktailFragment : Fragment() {
     private lateinit var binding: FragmentAddCocktailBinding
-    private val cocktailViewModel: CocktailViewModel by viewModels()
-    private lateinit var imageUrl: String
-
-    private val drinks = resources.getStringArray(R.array.cocktails)
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-    }
+    private lateinit var sharedPreferences: SharedPreferences
+    private val orderViewModel : OrderViewModel by viewModels()
+    private lateinit var receivedOrder: Order
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        if (isAdded) {
-            Log.d("Contextual", "Added to Context")
-        }
-
         binding = FragmentAddCocktailBinding.inflate(inflater)
         binding.lifecycleOwner = this
         return binding.root
@@ -39,27 +33,36 @@ class AddCocktailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupAdapter()
-        setupViews()
-        setupListeners()
-        observerViewModel()
+        sharedPreferences = requireActivity().getSharedPreferences("shared", Context.MODE_PRIVATE)
+        setup()
     }
 
-    private fun setupAdapter() {
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, drinks)
-        binding.etNombreC.setAdapter(adapter)
+    private fun setup() {
+        binding.fbagregarCoctel.setOnClickListener {
+            updateOrder()
+        }
     }
 
-    private fun setupViews() {
-        // TODO
+    private fun updateOrder(){
+        val receivedBundle = arguments
+        receivedOrder = receivedBundle?.getSerializable("clave")  as Order
+        val nombre_coctel = binding.etNombreC.text.toString()
+        val cantidad = binding.etcant.text.toString()
+        val url = ""
+        val aditionalDrink: MutableList<String> = mutableListOf(nombre_coctel,cantidad,url)
+
+
+        if (nombre_coctel.isNotEmpty() && cantidad.isNotEmpty()) {
+            receivedOrder.drinks.add(aditionalDrink)
+            val orden = Order(receivedOrder.table, receivedOrder.drinks)
+            orderViewModel.updateOrder(orden)
+            Toast.makeText(context, "Coctel agregado con exito", Toast.LENGTH_SHORT).show()
+            val bundle = Bundle()
+            bundle.putSerializable("clave",receivedOrder)
+            findNavController().navigate(R.id.action_addCocktailFragment_to_detailsOrderFragment,bundle)
+        } else {
+            Toast.makeText(context, "Por favor, llene todos los campos", Toast.LENGTH_SHORT).show()
+        }
     }
 
-    private fun setupListeners()
-    {
-        // TODO
-    }
-
-    private fun observerViewModel() {
-        // TODO
-    }
 }

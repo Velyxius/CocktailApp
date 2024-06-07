@@ -71,8 +71,8 @@
             android:layout_height="45dp"
             android:layout_marginBottom="204dp"
             android:backgroundTint="@color/color_botones"
-            android:contentDescription="@string/btn_info_addCoctel"
-            android:text="@string/btn_info_addCoctel"
+            android:contentDescription="@string/description_btn_addCoctel"
+            android:text="@string/btn_addCoctel"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -99,3 +99,4 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
+
