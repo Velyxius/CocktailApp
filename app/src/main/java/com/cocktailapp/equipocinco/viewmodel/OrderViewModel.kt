@@ -10,13 +10,17 @@ import com.cocktailapp.equipocinco.repository.OrderRepository
 import kotlinx.coroutines.launch
 import com.cocktailapp.equipocinco.model.Order
 import com.cocktailapp.equipocinco.model.CocktailResponse
+import com.cocktailapp.equipocinco.model.Cocktail
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 
 
-class OrderViewModel(application: Application) : AndroidViewModel(application) {
-    val context = getApplication<Application>()
-    private val orderRepository = OrderRepository(context)
-
+@HiltViewModel
+class OrderViewModel @Inject constructor(
+    private val orderRepository: OrderRepository
+):ViewModel() {
+   
     private val _progressState = MutableLiveData(false)
     val progressState: LiveData<Boolean> = _progressState
 

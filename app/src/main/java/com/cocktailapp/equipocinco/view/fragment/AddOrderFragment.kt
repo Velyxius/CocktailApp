@@ -21,9 +21,10 @@ import com.cocktailapp.equipocinco.databinding.FragmentAddOrderBinding
 import com.cocktailapp.equipocinco.model.Order
 import com.cocktailapp.equipocinco.viewmodel.CocktailViewModel
 import com.cocktailapp.equipocinco.viewmodel.OrderViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 
-
+@AndroidEntryPoint
 class AddOrderFragment : Fragment() {
     private lateinit var binding: FragmentAddOrderBinding
     private lateinit var sharedPreferences: SharedPreferences
@@ -53,7 +54,12 @@ class AddOrderFragment : Fragment() {
         setupViews()
     }
 
-    private fun setupListeners() {
+      private fun setupListeners() {
+        
+        binding.fbCancelCoctel.setOnClickListener {
+            findNavController().navigate(R.id.action_addOrderFragment_to_homeOrderFragment)
+        }
+        
         binding.fbagregarCoctel.setOnClickListener {
             guardarProducto()
         }

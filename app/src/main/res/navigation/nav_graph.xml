@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_addOrderFragment_to_detailsOrderFragment"
             app:destination="@id/detailsOrderFragment" />
+        <action
+            android:id="@+id/action_addOrderFragment_to_homeOrderFragment"
+            app:destination="@id/homeOrderFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsOrderFragment"
@@ -39,6 +42,9 @@
         <action
             android:id="@+id/action_detailsOrderFragment_to_deleteOrderFragment"
             app:destination="@id/deleteOrderFragment" />
+        <action
+            android:id="@+id/action_detailsOrderFragment_to_homeOrderFragment"
+            app:destination="@id/homeOrderFragment" />
     </fragment>
     <fragment
         android:id="@+id/addCocktailFragment"
