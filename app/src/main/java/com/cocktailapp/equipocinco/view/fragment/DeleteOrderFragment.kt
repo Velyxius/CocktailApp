@@ -13,7 +13,9 @@ import com.cocktailapp.equipocinco.R
 import com.cocktailapp.equipocinco.databinding.FragmentDeleteOrderBinding
 import com.cocktailapp.equipocinco.model.Order
 import com.cocktailapp.equipocinco.viewmodel.OrderViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 
 class DeleteOrderFragment : Fragment() {
 
