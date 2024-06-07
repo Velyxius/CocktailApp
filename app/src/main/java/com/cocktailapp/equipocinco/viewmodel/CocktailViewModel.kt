@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import com.cocktailapp.equipocinco.repository.CocktailRepository
+import com.cocktailapp.equipocinco.model.Drink
 
 class CocktailViewModel(application: Application) : AndroidViewModel(application) {
     val context = getApplication<Application>()
@@ -16,8 +17,8 @@ class CocktailViewModel(application: Application) : AndroidViewModel(application
     private val _progressState = MutableLiveData(false)
     val progressState: LiveData<Boolean> = _progressState
 
-    private val _cocktail = MutableLiveData<List<Map<String, Any>> >()
-    val cocktail: LiveData<List<Map<String, Any>> > get() = _cocktail
+    private val _cocktail = MutableLiveData<List<Drink> >()
+    val cocktail: LiveData<List<Drink> > get() = _cocktail
 
     fun getCocktail(cocktail: String) {
         viewModelScope.launch {
