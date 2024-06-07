@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.cocktailapp.equipocinco.R
 import com.cocktailapp.equipocinco.databinding.ItemCocktailBinding
 import com.cocktailapp.equipocinco.databinding.ItemListDrinkBinding
@@ -34,12 +35,16 @@ class ListDrinkOrderViewHolder(
         drink:MutableList<String>,
         orderViewModel: OrderViewModel
     ) {
+        val context = bindingItem.root.context
         val name_cocktail = "${drink[0]}"
         val quantity = "${drink[1]}"
-        val url_coctail = "${drink[2]}"
+        val url = "${drink[2]}"
 
         bindingItem.tvQuantity.text = quantity
         bindingItem.tvCocktailName.text = name_cocktail
+        Glide.with(context)
+            .load(url)
+            .into(bindingItem.imageViewPhotoUrl)
 
         val listaObjetos = listOf(
             MiObjeto(order,position)

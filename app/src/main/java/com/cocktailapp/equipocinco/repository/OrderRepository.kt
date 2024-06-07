@@ -2,12 +2,17 @@ package com.cocktailapp.equipocinco.repository
 
 import android.content.Context
 import com.cocktailapp.equipocinco.model.Order
+import com.cocktailapp.equipocinco.webservice.ApiService
+import com.cocktailapp.equipocinco.webservice.ApiUtils
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 
 class OrderRepository(val context: Context) {
     private val db = FirebaseFirestore.getInstance()
+    private val apiService: ApiService = ApiUtils.getApiService()
 
     fun eliminarPedido(table: String) {
         db.collection("order").document(table).delete()
@@ -78,5 +83,4 @@ class OrderRepository(val context: Context) {
             null
         }
     }
-
 }
