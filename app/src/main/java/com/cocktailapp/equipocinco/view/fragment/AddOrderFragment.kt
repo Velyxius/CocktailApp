@@ -34,7 +34,6 @@ class AddOrderFragment : Fragment() {
     private lateinit var imageURL: String
     private lateinit var cocktailName: String
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -95,7 +94,7 @@ class AddOrderFragment : Fragment() {
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             cocktailName = binding.etNombreC.text.toString()
-            Log.d("NombreCoctel", cocktailName)
+            // Log.d("NombreCoctel", cocktailName)
         }
 
         override fun afterTextChanged(s: Editable?) {}
@@ -107,7 +106,6 @@ class AddOrderFragment : Fragment() {
         val nombre_coctel = binding.etNombreC.text.toString()
         val cantidad = binding.etcant.text.toString()
         val url = imageURL
-
 
         if (mesa.isNotEmpty() && nombre_coctel.isNotEmpty() && cantidad.isNotEmpty()) {
             val detalleProducto: MutableList<String> = mutableListOf(nombre_coctel, cantidad, url)

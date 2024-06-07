@@ -30,6 +30,7 @@
 
     <!-- Strings used for fragments for navigation -->
     <string-array name="cocktails">
+        <item>Afterglow</item>
         <item>Applejack</item>
         <item>Aviation</item>
         <item>Bamboo</item>
@@ -39,9 +40,12 @@
         <item>Bramble</item>
         <item>Brooklyn</item>
         <item>Caipirinha</item>
+        <item>Casino Royale</item>
         <item>Clover Club</item>
         <item>Cosmopolitan</item>
         <item>Daiquiri</item>
+        <item>Frosé</item>
+        <item>Gagliardo</item>
         <item>Gimlet</item>
         <item>Mai Tai</item>
         <item>Manhattan</item>
@@ -52,9 +56,11 @@
         <item>Moscow Mule</item>
         <item>Negroni</item>
         <item>Old Fashioned</item>
+        <item>Orangeade</item>
         <item>Paloma</item>
         <item>Penicillin</item>
         <item>Piña Colada</item>
+        <item>Sangria</item>
         <item>Sazerac</item>
         <item>Spritz</item>
         <item>Tom Collins</item>
@@ -62,6 +68,7 @@
         <item>Whiskey Sour</item>
         <item>White Lady</item>
         <item>Zombie</item>
+        <item>Zorbatini</item>
     </string-array>
 
 </resources>
