@@ -78,12 +78,13 @@ class AddOrderFragment : Fragment() {
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, drinks)
         binding.etNombreC.setAdapter(adapter)
     }
+
     private fun fetchImageURL() {
         cocktailViewModel.getCocktail(cocktailName)
         cocktailViewModel.cocktail.observe(viewLifecycleOwner) { drinks ->
             val drinkName = drinks.first().drinkName
             val URL = drinks.first().drinkURL
-            Log.d("EstaVaGlide", drinkName)
+            // Log.d("EstaVaGlide", drinkName)
             cocktailName = drinkName
             imageURL = URL
         }
