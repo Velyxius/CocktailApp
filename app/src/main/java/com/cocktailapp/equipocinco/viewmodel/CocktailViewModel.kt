@@ -9,10 +9,13 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import com.cocktailapp.equipocinco.repository.CocktailRepository
 import com.cocktailapp.equipocinco.model.Drink
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class CocktailViewModel(application: Application) : AndroidViewModel(application) {
-    val context = getApplication<Application>()
-    private val cocktailRepository = CocktailRepository(context)
+@HiltViewModel
+class CocktailViewModel @Inject constructor(
+    private val cocktailRepository: CocktailRepository
+) : ViewModel() {
 
     private val _progressState = MutableLiveData(false)
     val progressState: LiveData<Boolean> = _progressState
