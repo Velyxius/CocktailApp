@@ -38,6 +38,7 @@ class DetailsOrderFragment : Fragment() {
         dataListDrink()
         addDrink()
         deleteDrink()
+        setups()
     }
 
 
@@ -64,6 +65,12 @@ class DetailsOrderFragment : Fragment() {
             val bundle = Bundle()
             bundle.putSerializable("clave",receivedOrder)
             findNavController().navigate(R.id.action_detailsOrderFragment_to_addCocktailFragment,bundle)
+        }
+    }
+
+    private fun setups(){
+        binding.homeToolbar.backBtn.setOnClickListener{
+            findNavController().navigate(R.id.action_detailsOrderFragment_to_homeOrderFragment)
         }
     }
 

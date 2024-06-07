@@ -48,6 +48,25 @@ class EditCocktailFragment : Fragment() {
     }
 
     private fun setup() {
+
+        binding.fbCancelCoctel.setOnClickListener {
+            val receivedBundle = arguments
+            val listaRecuperada =
+                receivedBundle?.getSerializable("clave") as ArrayList<ListDrinkOrderViewHolder.MiObjeto>?
+
+            //val drinkName =
+            listaRecuperada?.forEach { miObjeto ->
+                val order = miObjeto.order
+                receivedOrder = order
+                val bundle = Bundle()
+                bundle.putSerializable("clave", receivedOrder)
+                findNavController().navigate(
+                    R.id.action_editCocktailFragment_to_detailsOrderFragment,
+                    bundle
+                )
+
+            }
+        }
         binding.fbeditarCoctel.setOnClickListener {
             updateOrder()
         }
@@ -55,6 +74,7 @@ class EditCocktailFragment : Fragment() {
     private fun setOrder() {
         val receivedBundle = arguments
         val listaRecuperada = receivedBundle?.getSerializable("clave") as ArrayList<ListDrinkOrderViewHolder.MiObjeto>?
+
         //val drinkName =
         listaRecuperada?.forEach { miObjeto ->
             val order = miObjeto.order

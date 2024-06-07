@@ -38,6 +38,13 @@ class AddCocktailFragment : Fragment() {
     }
 
     private fun setup() {
+        binding.fbCancelCoctel.setOnClickListener {
+            val receivedBundle = arguments
+            receivedOrder = receivedBundle?.getSerializable("clave")  as Order
+            val bundle = Bundle()
+            bundle.putSerializable("clave",receivedOrder)
+            findNavController().navigate(R.id.action_addCocktailFragment_to_detailsOrderFragment,bundle)
+        }
         binding.fbagregarCoctel.setOnClickListener {
             updateOrder()
         }

@@ -43,6 +43,10 @@ class AddOrderFragment : Fragment() {
 
     private fun setup() {
 
+        binding.fbCancelCoctel.setOnClickListener {
+            findNavController().navigate(R.id.action_addOrderFragment_to_homeOrderFragment)
+        }
+
         binding.fbagregarCoctel.setOnClickListener {
             guardarProducto()
         }
