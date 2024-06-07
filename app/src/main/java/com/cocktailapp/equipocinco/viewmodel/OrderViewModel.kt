@@ -45,6 +45,8 @@ class OrderViewModel @Inject constructor(
             try {
                 _listOrder.value = orderRepository.getListOrder()
                 _progressState.value = false
+                println("LISTA ORDENES")
+                println(_listOrder.value)
             } catch (e: Exception) {
                 _progressState.value = false
             }
