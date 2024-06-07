@@ -68,7 +68,7 @@ class DetailsOrderFragment : Fragment() {
     }
 
     private fun deleteDrink(){
-        binding.logoutBtn.setOnClickListener {
+        binding.trashAllBtn.setOnClickListener {
             val bundle = Bundle()
             bundle.putSerializable("clave",receivedOrder)
             findNavController().navigate(R.id.action_detailsOrderFragment_to_deleteOrderFragment,bundle)

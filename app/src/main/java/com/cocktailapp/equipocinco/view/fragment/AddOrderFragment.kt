@@ -48,7 +48,7 @@ class AddOrderFragment : Fragment() {
         }
     }
     private fun guardarProducto() {
-        val mesa = binding.numMesa.toString()
+        val mesa = binding.etMesNum.text.toString()
         val nombre_coctel = binding.etNombreC.text.toString()
         val cantidad = binding.etcant.text.toString()
         val url = ""

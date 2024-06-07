@@ -38,11 +38,11 @@ class DeleteOrderFragment : Fragment() {
     }
 
     private fun setup() {
-        binding.btnEliminar.setOnClickListener {
+        binding.btnConfirm.setOnClickListener {
             deleteDrink()
         }
 
-        binding.btnCancelar.setOnClickListener{
+        binding.btnCancel.setOnClickListener{
             val bundle = Bundle()
             val receivedBundle = arguments
             receivedOrder = receivedBundle?.getSerializable("clave") as Order

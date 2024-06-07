@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.cocktailapp.equipocinco.R
+import com.cocktailapp.equipocinco.databinding.ItemCocktailBinding
 import com.cocktailapp.equipocinco.databinding.ItemListDrinkBinding
 import com.cocktailapp.equipocinco.model.Order
 import com.cocktailapp.equipocinco.view.viewholder.ListDrinkOrderViewHolder
@@ -18,7 +19,7 @@ class ListDrinkOrderAdapter (private val order: Order,
                              private val orderViewModel: OrderViewModel
 ):RecyclerView.Adapter<ListDrinkOrderViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListDrinkOrderViewHolder {
-        val binding = ItemListDrinkBinding.inflate(LayoutInflater.from(parent.context),parent, false)
+        val binding = ItemCocktailBinding.inflate(LayoutInflater.from(parent.context),parent, false)
         return ListDrinkOrderViewHolder(binding,navController,this)
     }
 
