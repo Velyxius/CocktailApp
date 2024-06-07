@@ -27,7 +27,7 @@ class LoginViewModelTest {
     lateinit var firebaseAuth: FirebaseAuth
 
     @get:Rule
-    val rule = InstantTaskExecutorRule() //código que involucra LiveData y ViewModel
+    val rule = InstantTaskExecutorRule()
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var loginRepository: LoginRepository
     @Captor
@@ -76,11 +76,11 @@ class LoginViewModelTest {
         whenever(mockFirebaseAuth.signInWithEmailAndPassword("", "")).thenReturn(failedTask)
 
         // Prueben descomentando, también funciona
-/*        // Llamada al método que estás probando
-            loginViewModel.loginUser(email, pass) { isLogin ->
-            // Verificación de resultados usando assertions
-            assertTrue(isLogin)
-        }*/
+        /*        // Llamada al método que estás probando
+                    loginViewModel.loginUser(email, pass) { isLogin ->
+                    // Verificación de resultados usando assertions
+                    assertTrue(isLogin)
+                }*/
         // Llamada al método que estás probando con valores vacíos
         loginViewModel.loginUser("", "") { isLogin ->
             // Verificación de resultados usando assertions
@@ -110,7 +110,7 @@ class LoginViewModelTest {
     @Test
     fun testRegisterUserFailure() {
         val email = "test@example.com"
-        val password = "password123"
+        val password = "123456"
 
         Mockito.`when`(loginRepository.registerUser(eq(email), eq(password), any()))
             .thenAnswer { invocation ->
@@ -124,19 +124,182 @@ class LoginViewModelTest {
         }
     }
 
-    // TODO: Daniel revisa porfa
     @Test
     fun logoutUser_Success() {
         // Mock successful sign-out
-        Mockito.`when`(firebaseAuth.signOut()).then { /* simulate successful sign-out */ }
+        Mockito.`when`(firebaseAuth.signOut()).then { }
 
-        // Perform the logout operation
         loginViewModel.logoutUser { success, error ->
-            // Verify that the callback indicates success and no error message
             assert(success)
             assert(error == null)
         }
     }
+
+    @Test
+    fun testActiveSession() {
+        val email = "active_user@example.com"
+
+        loginViewModel.sesion(email) { isEnableView ->
+            assertTrue(isEnableView)
+        }
+    }
+
+    @Test
+    fun testLoginUserWithIncorrectPassword() {
+        val email = "test@example.com"
+        val password = "999999" // Contraseña incorrecta
+
+        // Simular comportamiento del repository para contraseña incorrecta
+        Mockito.`when`(loginRepository.loginUser(eq(email), eq(password), any()))
+            .thenAnswer { invocation ->
+                val callback = invocation.getArgument<(Boolean) -> Unit>(2)
+                // Simular respuesta es fallida
+                callback.invoke(false)
+            }
+
+        loginViewModel.loginUser(email, password) { isLogin ->
+            assertFalse(isLogin)
+        }
+    }
+
+    @Test
+    fun testLoginUserWithInvalidCredentials() {
+        val email = "invalid_user@example.com"
+        val password = "111111"
+
+        // Simular comportamiento del repository para credenciales inválidas
+        Mockito.`when`(loginRepository.loginUser(eq(email), eq(password), any()))
+            .thenAnswer { invocation ->
+                val callback = invocation.getArgument<(Boolean) -> Unit>(2)
+                // Simular respuesta es fallida
+                callback.invoke(false)
+            }
+
+        loginViewModel.loginUser(email, password) { isLogin ->
+            assertFalse(isLogin)
+        }
+    }
+
+    @Test
+    fun logoutUser_Failure() {
+        // Simular comportamiento del repository para un cierre de sesión fallido
+        Mockito.`when`(firebaseAuth.signOut()).thenThrow(RuntimeException("Simulated sign-out error"))
+
+        // Realizar la operación de cierre de sesión
+        loginViewModel.logoutUser { success, error ->
+            // Verifica que la devolución de llamada indique un error y contenga un mensaje de error
+            assertFalse(success)
+            assertNotNull(error)
+        }
+    }
+
+    /*
+        Verifica que el registro falla cuando se proporciona un correo electrónico
+        con un formato inválido.
+     */
+    @Test
+    fun testRegisterUserWithInvalidEmail() {
+        val email = "invalid-email"
+        val password = "password123"
+
+        loginViewModel.registerUser(email, password) { isRegister ->
+            assertFalse(isRegister)
+        }
+    }
+
+    /**
+     * Verifica que el registro falla cuando se proporciona una contraseña que
+     * no cumple con los requisitos mínimos de seguridad (por ejemplo, menos de 6 caracteres).
+     */
+    @Test
+    fun testRegisterUserWithWeakPassword() {
+        val email = "test@example.com"
+        val password = "123"
+
+        loginViewModel.registerUser(email, password) { isRegister ->
+            assertFalse(isRegister)
+        }
+    }
+
+    /**
+     * Verifica que el inicio de sesión falla
+     * cuando se utiliza un correo electrónico que no está registrado.
+     */
+    @Test
+    fun testLoginUserWithUnregisteredEmail() {
+        val email = "unregistered@example.com"
+        val password = "123456"
+
+        // Simular comportamiento del repository para un correo no registrado
+        Mockito.`when`(loginRepository.loginUser(eq(email), eq(password), any()))
+            .thenAnswer { invocation ->
+                val callback = invocation.getArgument<(Boolean) -> Unit>(2)
+                // Simular respuesta es fallida
+                callback.invoke(false)
+            }
+
+        loginViewModel.loginUser(email, password) { isLogin ->
+            assertFalse(isLogin)
+        }
+    }
+
+
+    @Test
+    fun testRegisterUserWithExistingEmail() {
+        val email = "daniel@gmail.com"
+        val password = "123456"
+
+        // Simular comportamiento del repository para un correo ya registrado
+        Mockito.`when`(loginRepository.registerUser(eq(email), eq(password), any()))
+            .thenAnswer { invocation ->
+                val callback = invocation.getArgument<(Boolean) -> Unit>(2)
+                // Simular respuesta es fallida
+                callback.invoke(false)
+            }
+
+        loginViewModel.registerUser(email, password) { isRegister ->
+            assertFalse(isRegister)
+        }
+    }
+
+    /**
+     * Verifica que el inicio de sesión maneja correctamente los errores de red.
+     */
+    @Test
+    fun testLoginUserNetworkError() {
+        val email = "test@example.com"
+        val password = "789893"
+
+        // Simular comportamiento del repository para un error de red en el inicio de sesión
+        Mockito.`when`(loginRepository.loginUser(eq(email), eq(password), any()))
+            .thenAnswer { invocation ->
+                val callback = invocation.getArgument<(Boolean) -> Unit>(2)
+                // Simular respuesta es fallida debido a un error de red
+                callback.invoke(false)
+            }
+
+        loginViewModel.loginUser(email, password) { isLogin ->
+            assertFalse(isLogin)
+        }
+    }
+
+    @Test
+    fun testLogoutUserInactive() {
+        // Simular comportamiento del repository para un cierre de sesión sin usuario activo
+        Mockito.`when`(firebaseAuth.signOut())
+            .thenThrow(RuntimeException("Simulated sign-out error"))
+
+        // Perform the logout operation
+        loginViewModel.logoutUser { success, error ->
+            // Verify that the callback indicates failure and contains an error message
+            assertFalse(success)
+            assertNotNull(error)
+        }
+    }
+
+
+
+
 }
 
 
