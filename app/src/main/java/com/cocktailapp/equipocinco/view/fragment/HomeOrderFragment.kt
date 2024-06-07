@@ -22,7 +22,7 @@ import com.cocktailapp.equipocinco.databinding.ItemOrderBinding
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class HomeOrderFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeOrderBinding

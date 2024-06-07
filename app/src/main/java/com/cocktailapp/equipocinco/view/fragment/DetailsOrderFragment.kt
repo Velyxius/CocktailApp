@@ -15,7 +15,9 @@ import com.cocktailapp.equipocinco.view.adapter.ListDrinkOrderAdapter
 import com.cocktailapp.equipocinco.databinding.FragmentDetailsOrderBinding
 import com.cocktailapp.equipocinco.model.Order
 import com.cocktailapp.equipocinco.viewmodel.OrderViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 
 class DetailsOrderFragment : Fragment() {
     private lateinit var binding: FragmentDetailsOrderBinding
@@ -38,6 +40,7 @@ class DetailsOrderFragment : Fragment() {
         dataListDrink()
         addDrink()
         deleteDrink()
+        setups()
     }
 
     private fun dataListDrink() {
@@ -64,6 +67,12 @@ class DetailsOrderFragment : Fragment() {
             val bundle = Bundle()
             bundle.putSerializable("clave",receivedOrder)
             findNavController().navigate(R.id.action_detailsOrderFragment_to_addCocktailFragment,bundle)
+        }
+    }
+
+    private fun setups(){
+        binding.tbDetailsOrder.backBtn.setOnClickListener{
+            findNavController().navigate(R.id.action_detailsOrderFragment_to_homeOrderFragment)
         }
     }
 

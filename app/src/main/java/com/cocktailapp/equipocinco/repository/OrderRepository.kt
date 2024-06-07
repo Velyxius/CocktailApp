@@ -6,14 +6,15 @@ import com.cocktailapp.equipocinco.webservice.ApiService
 import com.cocktailapp.equipocinco.webservice.ApiUtils
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 
-class OrderRepository(val context: Context) {
-    private val db = FirebaseFirestore.getInstance()
-    private val apiService: ApiService = ApiUtils.getApiService()
+class OrderRepository @Inject constructor(
+    private val firestore: FirebaseFirestore
+){
 
+
+    private val db = firestore
     fun eliminarPedido(table: String) {
         db.collection("order").document(table).delete()
             .addOnSuccessListener {
