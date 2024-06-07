@@ -48,7 +48,7 @@ class EditCocktailFragment : Fragment() {
     }
 
     private fun setup() {
-        binding.btnGuardarArticulo.setOnClickListener {
+        binding.fbeditarCoctel.setOnClickListener {
             updateOrder()
         }
     }
@@ -62,19 +62,19 @@ class EditCocktailFragment : Fragment() {
             receivedPosition = miObjeto.position
             val drink = order.drinks[miObjeto.position][0]
             val numberDrink = order.drinks[miObjeto.position][1]
-            binding.etNombreArticulo.setText(drink)
-            binding.etPrecio.setText(numberDrink)
+            binding.etNombreC.setText(drink)
+            binding.etcantidad.setText(numberDrink)
         }
     }
 
     private fun updateOrder(){
-        val nombreArticulo = binding.etNombreArticulo.text.toString()
-        val precio = binding.etPrecio.text.toString()
+        val nombre_coctel = binding.etNombreC.text.toString()
+        val cantidad_coctel = binding.etcantidad.text.toString()
         val url = ""
-        val modifieDrink: MutableList<String> = mutableListOf(nombreArticulo,precio,url)
+        val modifieDrink: MutableList<String> = mutableListOf(nombre_coctel,cantidad_coctel,url)
         val listDrinks: MutableList<MutableList<String>> = receivedOrder.drinks
         listDrinks[receivedPosition] = modifieDrink
-        if (nombreArticulo.isNotEmpty() && precio.isNotEmpty()) {
+        if (nombre_coctel.isNotEmpty() && cantidad_coctel.isNotEmpty()) {
             val orden = Order(receivedOrder.table, receivedOrder.drinks)
             orderViewModel.updateOrder(orden)
             val bundle = Bundle()
@@ -87,32 +87,7 @@ class EditCocktailFragment : Fragment() {
     }
 
     private fun limpiarCampos() {
-        binding.etNombreArticulo.setText("")
-        binding.etPrecio.setText("")
+        binding.etNombreC.setText("")
+        binding.etcantidad.setText("")
     }
-
-
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EditCocktailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EditCocktailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
-
-
-
 }

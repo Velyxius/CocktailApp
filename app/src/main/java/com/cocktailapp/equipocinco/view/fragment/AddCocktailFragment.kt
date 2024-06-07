@@ -21,8 +21,6 @@ class AddCocktailFragment : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
     private val orderViewModel : OrderViewModel by viewModels()
     private lateinit var receivedOrder: Order
-    private var receivedPosition = 0
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +38,7 @@ class AddCocktailFragment : Fragment() {
     }
 
     private fun setup() {
-        binding.btnGuardarArticulo.setOnClickListener {
+        binding.fbagregarCoctel.setOnClickListener {
             updateOrder()
         }
     }
@@ -48,13 +46,13 @@ class AddCocktailFragment : Fragment() {
     private fun updateOrder(){
         val receivedBundle = arguments
         receivedOrder = receivedBundle?.getSerializable("clave")  as Order
-        val nombreArticulo = binding.etNombreArticulo.text.toString()
-        val precio = binding.etPrecio.text.toString()
+        val nombre_coctel = binding.etNombreC.text.toString()
+        val cantidad = binding.etcant.text.toString()
         val url = ""
-        val aditionalDrink: MutableList<String> = mutableListOf(nombreArticulo,precio,url)
+        val aditionalDrink: MutableList<String> = mutableListOf(nombre_coctel,cantidad,url)
 
 
-        if (nombreArticulo.isNotEmpty() && precio.isNotEmpty()) {
+        if (nombre_coctel.isNotEmpty() && cantidad.isNotEmpty()) {
             receivedOrder.drinks.add(aditionalDrink)
             val orden = Order(receivedOrder.table, receivedOrder.drinks)
             orderViewModel.updateOrder(orden)

@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.cocktailapp.equipocinco.R
+import com.cocktailapp.equipocinco.databinding.CreateOrderToolbarBinding
 import com.cocktailapp.equipocinco.databinding.FragmentAddOrderBinding
 import com.cocktailapp.equipocinco.model.Order
 import com.cocktailapp.equipocinco.viewmodel.OrderViewModel
@@ -21,6 +22,7 @@ class AddOrderFragment : Fragment() {
     private lateinit var binding: FragmentAddOrderBinding
     private lateinit var sharedPreferences: SharedPreferences
     private val orderViewModel : OrderViewModel by viewModels()
+    private lateinit var createOrderToolbarBinding: CreateOrderToolbarBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,20 +43,20 @@ class AddOrderFragment : Fragment() {
 
     private fun setup() {
 
-        binding.btnGuardarArticulo.setOnClickListener {
+        binding.fbagregarCoctel.setOnClickListener {
             guardarProducto()
         }
     }
     private fun guardarProducto() {
-        val codigo = binding.etCodigo.text.toString()
-        val nombreArticulo = binding.etNombreArticulo.text.toString()
-        val precio = binding.etPrecio.text.toString()
+        val mesa = binding.numMesa.toString()
+        val nombre_coctel = binding.etNombreC.text.toString()
+        val cantidad = binding.etcant.text.toString()
         val url = ""
 
-        if (codigo.isNotEmpty() && nombreArticulo.isNotEmpty() && precio.isNotEmpty()) {
-            val detalleProducto: MutableList<String> = mutableListOf(nombreArticulo, precio,url)
+        if (mesa.isNotEmpty() && nombre_coctel.isNotEmpty() && cantidad.isNotEmpty()) {
+            val detalleProducto: MutableList<String> = mutableListOf(nombre_coctel, cantidad,url)
             val listaProductos: MutableList<MutableList<String>> = mutableListOf(detalleProducto)
-            val orden = Order(codigo, listaProductos)
+            val orden = Order(mesa, listaProductos)
             orderViewModel.saveOrder(orden)
             val bundle = Bundle()
             bundle.putSerializable("clave",orden)
@@ -63,15 +65,6 @@ class AddOrderFragment : Fragment() {
         } else {
             Toast.makeText(context, "Por favor, llene todos los campos", Toast.LENGTH_SHORT).show()
         }
-    }
-
-
-
-
-    private fun limpiarCampos() {
-        binding.etCodigo.setText("")
-        binding.etNombreArticulo.setText("")
-        binding.etPrecio.setText("")
     }
 
 }
